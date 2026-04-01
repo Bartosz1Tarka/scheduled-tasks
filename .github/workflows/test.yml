@@ -23,6 +23,9 @@ jobs:
 
       - name: Check secrets are configured
         env:
+          TWILIO_SID: ${{ secrets.TWILIO_SID }}
+          TWILIO_TOKEN: ${{ secrets.TWILIO_TOKEN }}
+          OWM_API_KEY: ${{ secrets.OWM_API_KEY }}
           MY_EMAIL: ${{ secrets.MY_EMAIL }}
           MY_PASSWORD: ${{ secrets.MY_PASSWORD }}
         run: |
@@ -40,6 +43,30 @@ jobs:
             exit 1
           else
             echo "MY_PASSWORD is configured"
+          fi
+
+          if [ -z "$TWILIO_SID" ]; then
+            echo "TWILIO_SID secret is not set!"
+            echo "Go to Settings > Secrets > Actions and add it."
+            exit 1
+          else
+            echo "TWILIO_SID is configured"
+          fi
+
+          if [ -z "$TWILIO_TOKEN" ]; then
+            echo "TWILIO_TOKEN secret is not set!"
+            echo "Go to Settings > Secrets > Actions and add it."
+            exit 1
+          else
+            echo "TWILIO_TOKEN is configured"
+          fi
+
+          if [ -z "$OWM_API_KEY" ]; then
+            echo "OWM_API_KEY secret is not set!"
+            echo "Go to Settings > Secrets > Actions and add it."
+            exit 1
+          else
+            echo "OWM_API_KEY is configured"
           fi
 
           echo ""
@@ -60,13 +87,6 @@ jobs:
             echo "requirements.txt found"
           else
             echo "requirements.txt not found!"
-            exit 1
-          fi
-
-          if [ -f "birthdays.csv" ]; then
-            echo "birthdays.csv found"
-          else
-            echo "birthdays.csv not found!"
             exit 1
           fi
 
