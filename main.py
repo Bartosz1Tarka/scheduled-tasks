@@ -44,7 +44,7 @@ will_rain = False
 
 for item in weather_data["list"]:
     condition_code = item["weather"][0]["id"]
-    if int(condition_code) < 900:
+    if int(condition_code) < 700:
         will_rain = True
 
 if will_rain:
