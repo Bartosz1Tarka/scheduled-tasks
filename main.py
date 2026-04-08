@@ -19,10 +19,8 @@ twilio_auth_token = os.getenv("TWILIO_TOKEN")
 #OPENWEATHERMAP
 
 #wroclaw
-#lon = 17.038538
-#lat = 51.107883
-lon = 23.045185
-lat = 53.967057
+lon = 17.038538
+lat = 51.107883
 
 owm_endpoint = "https://api.openweathermap.org/data/2.5/forecast?"
 owm_api_key = os.getenv("OWM_API_KEY")
